@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AbyssCheck : MonoBehaviour
 {
-    MainMenu mainMenu;
-    [SerializeField] GameObject gameManager;
+    // this script controls winning couldron that is pushed down 
+
+    private MainMenu mainMenu;
+    [SerializeField] private GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class AbyssCheck : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // move to next scene when correct couldron is pushed down 
     {
         if (other.CompareTag("Keybox"))
         {

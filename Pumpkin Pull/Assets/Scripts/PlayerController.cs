@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    
-    public CharacterController characterController;
-    public float speed = 5f;
-    public float turnSmoothTime = 0.1f;
-    public Transform cam;
-    Vector3 moveVector;
-    private Animator animator;
-    
-    MainMenu mainMenu;
+
+    [SerializeField] private CharacterController characterController;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float turnSmoothTime = 0.1f;
+    [SerializeField] private Transform cam;
+    [SerializeField] private Vector3 moveVector;
     [SerializeField] GameObject gameManager;
+
+    private MainMenu mainMenu;
 
 
     float turnSmoothVelocity;
@@ -23,9 +22,7 @@ public class TestMovement : MonoBehaviour
     void Start()
     {
         mainMenu = gameManager.GetComponent<MainMenu>();
-        //Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,9 +39,8 @@ public class TestMovement : MonoBehaviour
         
 
 
-        if (direction.magnitude >= 0.1f &&  characterController.isGrounded == true)
+        if (direction.magnitude >= 0.1f &&  characterController.isGrounded == true) // script for movement, rotation and smoothened rotation  
         {
-            //animator.SetFloat("Speed", direction.magnitude);
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
@@ -66,12 +62,11 @@ public class TestMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // destroy player when it hits the bottom
     {
         if (other.CompareTag("Abyss") || other.CompareTag("Enemy"))
         {
             Destroy(this.gameObject);
-            //Cursor.lockState = CursorLockMode.None;
             mainMenu.GameOver();
         }
     }

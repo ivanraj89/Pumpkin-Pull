@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string firstLevel;
-    public string secondLevel;
-    public string thirdLevel;
-    public string fourthLevel;
-    public string fifthLevel;
-    public string tutorialScreen;
-    public string gameOver;
+    // script for scene control
+    [SerializeField] private string firstLevel;
+    [SerializeField] private string secondLevel;
+    [SerializeField] private string thirdLevel;
+    [SerializeField] private string fourthLevel;
+    [SerializeField] private string fifthLevel;
+    [SerializeField] private string tutorialScreen;
+    [SerializeField] private string gameOver;
     // Start is called before the first frame update
     void Start()
     {

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    public float speed = 3.0f;
+    //this script controls the pumpkin
+
+    [SerializeField] private GameObject playerLocation;
+    [SerializeField] private float speed = 3.0f;
+
     private Rigidbody enemyRb;
-    public GameObject playerLocation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +22,7 @@ public class Ghost : MonoBehaviour
     {
         if(playerLocation != null)
         {
-            enemyRb.AddForce((playerLocation.transform.position - transform.position).normalized * speed);
+            enemyRb.AddForce((playerLocation.transform.position - transform.position).normalized * speed); // adding force to the pumpkin to continuously move towards player
         }
         else
         {
